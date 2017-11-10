@@ -31,9 +31,9 @@ test.dis : test.elf
 test.elf : ldscript.ld start.o vectors.o
 	$(LD) -T $< $(filter-out $<,$^) -o $@
 start.o : start.c
-	$(CC) -mcpu=cortex-m4 -g -c $<
+	$(CC) -mcpu=cortex-m4 -mthumb -g -c $<
 vectors.o : vectors.s
-	$(AS) -mcpu=cortex-m4 -g $< -o $@
+	$(AS) -mcpu=cortex-m4 -mthumb -g $< -o $@
 clean : 
 	$(RM) vectors.o start.o
 realclean: clean
